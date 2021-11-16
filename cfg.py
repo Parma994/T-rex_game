@@ -4,7 +4,7 @@ import os
 
 #화면크기
 SCREENSIZE = (600, 150)
-#FPS
+#FPS(속도)
 FPS = 60
 #오디오 파일 위치
 AUDIO_PATHS = {

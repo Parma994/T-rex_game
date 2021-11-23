@@ -45,6 +45,7 @@ def main(highest_score, second_score, third_score):
     BGM = pygame.mixer.Sound("resources/audios/bgm.mp3")
     BGM_level2 = pygame.mixer.Sound("resources/audios/bgm_level2.mp3")
     BGM_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
+    BGM_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
     #구현 끝
     
     
@@ -52,17 +53,17 @@ def main(highest_score, second_score, third_score):
     clock = pygame.time.Clock()
     while True:
         
-        #배경음악 구현(2) 0 200 300 500 1000 각각 음악.
-        if(score <=5):
-            BGM_level2.stop()
+        if (score>=200):
             BGM.play(-1)
-        if(score >50): # 임의로 100 설정. 합의하에 값 조절.
+        if (score>=300):
             BGM.stop()
             BGM_level2.play(-1)
-        if(score >100):
+        if (score>=500):
             BGM_level2.stop()
             BGM_level3.play(-1)
-        #구현 끝
+        if (score>=1000):
+            BGM_level3.stop()
+            BGM_level4.play(-1)
             
             
         for event in pygame.event.get():
@@ -91,7 +92,7 @@ def main(highest_score, second_score, third_score):
             else:
                 position_ys = [cfg.SCREENSIZE[1]*0.70, cfg.SCREENSIZE[1]*0.50, cfg.SCREENSIZE[1]*0.50, cfg.SCREENSIZE[1]*0.10]
                 ptera_sprites_group.add(Ptera(cfg.IMAGE_PATHS['ptera'], position=(900, random.choice(position_ys))))
-                ptera_sprites_group.add(Ptera(cfg.IMAGE_PATHS['ptera'], position=(600, random.choice(position_ys))))
+                
         # --게임 요소 업데이트
         dino.update()
         ground.update()
@@ -114,42 +115,38 @@ def main(highest_score, second_score, third_score):
                 third_score = score
             if score % 100 == 0:
                 sounds['point'].play()
-            if score % 200 == 0:
-                sounds['up'].play()
-                ground.speed -= 1
+            if (200<=score<300):
+                ground.speed -= 0.3
                 for item in cloud_sprites_group:
-                    item.speed -= 1
+                    item.speed -= 3
                 for item in cactus_sprites_group:
-                    item.speed -= 1
+                    item.speed -= 0.1
                 for item in ptera_sprites_group:
-                    item.speed -= 1
-            if score%300==0:
-                sounds['up'].play()
-                ground.speed-=3
+                    item.speed -= 0.1
+            if (300<=score<500):
+                ground.speed-=0.4
                 for item in cloud_sprites_group:
                     item.speed-=4
                 for item in cactus_sprites_group:
-                    item.speed-=4
+                    item.speed-=0.2
                 for item in ptera_sprites_group:
-                    item.speed-=4
-            if score%500==0:
-                sounds['up'].play()
-                ground.speed-=5
+                    item.speed-=0.2
+            if (500<=score<1000):
+                ground.speed-=0.5
                 for item in cloud_sprites_group:
                     item.speed-=5
                 for item in cactus_sprites_group:
-                    item.speed-=7
+                    item.speed-=0.4
                 for item in ptera_sprites_group:
-                    item.speed-=7
-            if score%1000==0:
-                sounds['up'].play()
-                ground.speed-=10
+                    item.speed-=0.4
+            if (1000<=score):
+                ground.speed-=0.7
                 for item in cloud_sprites_group:
                     item.speed-=7
                 for item in cactus_sprites_group:
-                    item.speed-=10
+                    item.speed-=0.6
                 for item in ptera_sprites_group:
-                    item.speed-=10
+                    item.speed-=0.6
         # --충돌 체크
         for item in cactus_sprites_group:
             if pygame.sprite.collide_mask(dino, item):
@@ -175,6 +172,7 @@ def main(highest_score, second_score, third_score):
             BGM.stop()
             BGM_level2.stop()
             BGM_level3.stop()
+            BGM_level4.stop()
             score_board.save_rankscore(score)
             break
     # 게임 종료 인터페이스

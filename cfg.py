@@ -11,6 +11,7 @@ AUDIO_PATHS = {
     'die': os.path.join(os.getcwd(), 'resources/audios/die.wav'),
     'jump': os.path.join(os.getcwd(), 'resources/audios/jump.wav'),
     'point': os.path.join(os.getcwd(), 'resources/audios/point.wav')
+    'up':os.path.join(os.getcwd(), 'resources/audios/up.wav')
 }
 #그림 파일 위치
 IMAGE_PATHS = {

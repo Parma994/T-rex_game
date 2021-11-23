@@ -60,10 +60,11 @@ def main(highest_score, second_score, third_score):
         if add_obstacle_timer > random.randrange(50, 150):
             add_obstacle_timer = 0
             random_value = random.randrange(0, 10)
-            if random_value >= 5 and random_value <= 7:
+            if random_value >= 6 and random_value <= 9:
                 cactus_sprites_group.add(Cactus(cfg.IMAGE_PATHS['cacti']))
             else:
-                position_ys = [cfg.SCREENSIZE[1]*0.82, cfg.SCREENSIZE[1]*0.75, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.20]
+                position_ys = [cfg.SCREENSIZE[1]*0.70, cfg.SCREENSIZE[1]*0.50, cfg.SCREENSIZE[1]*0.50, cfg.SCREENSIZE[1]*0.10]
+                ptera_sprites_group.add(Ptera(cfg.IMAGE_PATHS['ptera'], position=(900, random.choice(position_ys))))
                 ptera_sprites_group.add(Ptera(cfg.IMAGE_PATHS['ptera'], position=(600, random.choice(position_ys))))
         # --게임 요소 업데이트
         dino.update()
@@ -87,7 +88,8 @@ def main(highest_score, second_score, third_score):
                 third_score = score
             if score % 100 == 0:
                 sounds['point'].play()
-            if score % 1000 == 0:
+            if score % 200 == 0:
+                sounds['up'].play()
                 ground.speed -= 1
                 for item in cloud_sprites_group:
                     item.speed -= 1
@@ -95,6 +97,33 @@ def main(highest_score, second_score, third_score):
                     item.speed -= 1
                 for item in ptera_sprites_group:
                     item.speed -= 1
+            if score%300==0:
+                sounds['up'].play()
+                ground.speed-=3
+                for item in cloud_sprites_group:
+                    item.speed-=4
+                for item in cactus_sprites_group:
+                    item.speed-=4
+                for item in ptera_sprites_group:
+                    item.speed-=4
+            if score%500==0:
+                sounds['up'].play()
+                ground.speed-=5
+                for item in cloud_sprites_group:
+                    item.speed-=5
+                for item in cactus_sprites_group:
+                    item.speed-=7
+                for item in ptera_sprites_group:
+                    item.speed-=7
+            if score%1000==0:
+                sounds['up'].play()
+                ground.speed-=10
+                for item in cloud_sprites_group:
+                    item.speed-=7
+                for item in cactus_sprites_group:
+                    item.speed-=10
+                for item in ptera_sprites_group:
+                    item.speed-=10
         # --충돌 체크
         for item in cactus_sprites_group:
             if pygame.sprite.collide_mask(dino, item):

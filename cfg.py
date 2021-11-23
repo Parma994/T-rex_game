@@ -11,7 +11,10 @@ AUDIO_PATHS = {
     'die': os.path.join(os.getcwd(), 'resources/audios/die.wav'),
     'jump': os.path.join(os.getcwd(), 'resources/audios/jump.wav'),
     'point': os.path.join(os.getcwd(), 'resources/audios/point.wav'),
-    'up':os.path.join(os.getcwd(), 'resources/audios/up.wav')
+    'bgm': os.path.join(os.getcwd(), 'resources/audios/bgm.mp3'),
+    'bgm_level2': os.path.join(os.getcwd(), 'resources/audios/bgm_level2.mp3'),
+    'bgm_level3': os.path.join(os.getcwd(), 'resources/audios/bgm_level3.mp3'),
+    'bgm_level4': os.path.join(os.getcwd(), 'resources/audios/bgm_level4.mp3')
 }
 #그림 파일 위치
 IMAGE_PATHS = {

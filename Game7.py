@@ -55,9 +55,10 @@ def main(highest_score, second_score, third_score):
         # --무작위 구름 추가
         if len(cloud_sprites_group) < 5 and random.randrange(0, 300) == 10:
             cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(30, 75))))
+            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 35))))
         # --선인장/익룡 무작위 추가
         add_obstacle_timer += 1
-        if add_obstacle_timer > random.randrange(50, 150):
+        if add_obstacle_timer > random.randrange(60, 150):
             add_obstacle_timer = 0
             random_value = random.randrange(0, 10)
             if random_value >= 6 and random_value <= 9:

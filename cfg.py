@@ -30,6 +30,6 @@ IMAGE_PATHS = {
     'replay': os.path.join(os.getcwd(), 'resources/images/replay.png')
 }
 #배경색상
-BACKGROUND_COLOR = (0, 235, 235)
+BACKGROUND_COLOR = (235, 235, 235)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

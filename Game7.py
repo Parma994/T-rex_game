@@ -33,6 +33,7 @@ def main(highest_score, second_score, third_score):
     third_score = third_score
     highest_score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(435, 15), bg_color=cfg.BACKGROUND_COLOR, is_highest=True)
     dino = Dinosaur(cfg.IMAGE_PATHS['dino'])
+    dino_2 = Dinosaur(cfg.IMAGE_PATHS['dino_2'])
     ground = Ground(cfg.IMAGE_PATHS['ground'], position=(0, cfg.SCREENSIZE[1]))
     cloud_sprites_group = pygame.sprite.Group()
     cactus_sprites_group = pygame.sprite.Group()
@@ -73,8 +74,10 @@ def main(highest_score, second_score, third_score):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
                     dino.jump(sounds)
+                    dino_2.duck() 
                 elif event.key == pygame.K_DOWN:
                     dino.duck()
+                    dino_2.jump(sounds)
             elif event.type == pygame.KEYUP and event.key == pygame.K_DOWN:
                 dino.unduck()
         screen.fill(cfg.BACKGROUND_COLOR)
@@ -95,6 +98,7 @@ def main(highest_score, second_score, third_score):
                 
         # --게임 요소 업데이트
         dino.update()
+        dino_2.update()
         ground.update()
         cloud_sprites_group.update()
         cactus_sprites_group.update()
@@ -156,6 +160,7 @@ def main(highest_score, second_score, third_score):
                 dino.die(sounds)
         # --게임 요소 화면에 그리기
         dino.draw(screen)
+        dino_2.draw(screen)
         ground.draw(screen)
         cloud_sprites_group.draw(screen)
         cactus_sprites_group.draw(screen)

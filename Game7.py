@@ -88,7 +88,7 @@ def main(highest_score, second_score, third_score):
         if add_obstacle_timer > random.randrange(60, 150):
             add_obstacle_timer = 0
             random_value = random.randrange(0, 10)
-            print(random_value)
+            #print(random_value)
             if random_value >= 6 and random_value <= 9:
                 cactus_sprites_group.add(Cactus(cfg.IMAGE_PATHS['cacti']))
             elif random_value <= 4:

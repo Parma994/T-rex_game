@@ -9,6 +9,7 @@ FPS = 60
 #오디오 파일 위치
 AUDIO_PATHS = {
     'die': os.path.join(os.getcwd(), 'resources/audios/die.wav'),
+    'eaten': os.path.join(os.getcwd(), 'resources/audios/eating.wav'),
     'jump': os.path.join(os.getcwd(), 'resources/audios/jump.wav'),
     'point': os.path.join(os.getcwd(), 'resources/audios/point.wav'),
     'bgm': os.path.join(os.getcwd(), 'resources/audios/bgm.mp3'),
@@ -18,6 +19,7 @@ AUDIO_PATHS = {
 }
 #그림 파일 위치
 IMAGE_PATHS = {
+    'apple': os.path.join(os.getcwd(), 'resources/images/apple.png'),
     'cacti': [
         os.path.join(os.getcwd(), 'resources/images/cacti-big.png'),
         os.path.join(os.getcwd(), 'resources/images/cacti-small.png')
@@ -27,16 +29,13 @@ IMAGE_PATHS = {
         os.path.join(os.getcwd(), 'resources/images/dino.png'),
         os.path.join(os.getcwd(), 'resources/images/dino_ducking.png')
     ],
-    'dino_2': [
-        os.path.join(os.getcwd(), 'resources/images/dino_2.png'),
-        os.path.join(os.getcwd(), 'resources/images/dino_ducking_2.png')
-    ],
     'gameover': os.path.join(os.getcwd(), 'resources/images/gameover.png'),
     'ground': os.path.join(os.getcwd(), 'resources/images/ground.png'),
     'numbers': os.path.join(os.getcwd(), 'resources/images/numbers.png'),
     'ptera': os.path.join(os.getcwd(), 'resources/images/ptera.png'),
     'replay': os.path.join(os.getcwd(), 'resources/images/replay.png')
 }
+
 #배경색상
 BACKGROUND_COLOR = (235, 235, 235)
 BLACK = (0, 0, 0)

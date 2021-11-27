@@ -96,7 +96,7 @@ def main(highest_score, second_score, third_score):
             if random_value >= 7 and random_value <= 10:
                 cactus_sprites_group.add(Cactus(cfg.IMAGE_PATHS['cacti']))
             elif random_value <= 5:
-                position_ys = [cfg.SCREENSIZE[1]*0.80, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.20]
+                position_ys = [cfg.SCREENSIZE[1]*0.80, cfg.SCREENSIZE[1]*0.65, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.20]
                 ptera_sprites_group.add(Ptera(cfg.IMAGE_PATHS['ptera'], position=(900, random.choice(position_ys))))
             elif random_value == 6:
                 position_ys = [cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.40, cfg.SCREENSIZE[1]*0.10]

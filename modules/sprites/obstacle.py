@@ -108,8 +108,6 @@ class Apple(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
         self.refresh_counter += 1
-        if self.eaten:
-            self.kill()
     '''현재 상태의 그림 불러오기'''
     def loadImage(self):
         self.image = self.images[self.image_idx]

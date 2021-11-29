@@ -9,11 +9,18 @@ FPS = 60
 #오디오 파일 위치
 AUDIO_PATHS = {
     'die': os.path.join(os.getcwd(), 'resources/audios/die.wav'),
+    'eaten': os.path.join(os.getcwd(), 'resources/audios/eating.wav'),
     'jump': os.path.join(os.getcwd(), 'resources/audios/jump.wav'),
-    'point': os.path.join(os.getcwd(), 'resources/audios/point.wav')
+    'point': os.path.join(os.getcwd(), 'resources/audios/point.wav'),
+    'bgm': os.path.join(os.getcwd(), 'resources/audios/bgm.mp3'),
+    'bgm_level2': os.path.join(os.getcwd(), 'resources/audios/bgm_level2.mp3'),
+    'bgm_level3': os.path.join(os.getcwd(), 'resources/audios/bgm_level3.mp3'),
+    'bgm_level4': os.path.join(os.getcwd(), 'resources/audios/bgm_level4.mp3'),
+    'bgm_level5': os.path.join(os.getcwd(), 'resources/audios/bgm_level5.mp3')
 }
 #그림 파일 위치
 IMAGE_PATHS = {
+    'apple': os.path.join(os.getcwd(), 'resources/images/apple.png'),
     'cacti': [
         os.path.join(os.getcwd(), 'resources/images/cacti-big.png'),
         os.path.join(os.getcwd(), 'resources/images/cacti-small.png')
@@ -29,7 +36,8 @@ IMAGE_PATHS = {
     'ptera': os.path.join(os.getcwd(), 'resources/images/ptera.png'),
     'replay': os.path.join(os.getcwd(), 'resources/images/replay.png')
 }
+
 #배경색상
-BACKGROUND_COLOR = (0, 235, 235)
+BACKGROUND_COLOR = (235, 235, 235)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

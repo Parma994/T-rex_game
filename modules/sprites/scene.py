@@ -100,13 +100,10 @@ class Scoreboard(pygame.sprite.Sprite):
             rankFile = open("T-rex.txt", 'r')
             rankscores = rankFile.readlines()
             if len(rankscores) >= 1:
-                # self.highest_score = rankscores[0].strip()
                 self.highest_score = decrypt(int(rankscores[0].strip()))
             if len(rankscores) >= 2:
-                # self.second_score = rankscores[1].strip()
                 self.second_score = decrypt(int(rankscores[1].strip()))
             if len(rankscores) >= 3:
-                # self.third_score = rankscores[2].strip()
                 self.third_score = decrypt(int(rankscores[2].strip()))
             rankFile.close()
         return self.highest_score, self.second_score, self.third_score
@@ -124,8 +121,7 @@ class Scoreboard(pygame.sprite.Sprite):
             self.second_score = score
         elif score > prev_third_score:
             self.third_score = score
-        rankscores = [self.highest_score, self.second_score, self.third_score]
-        #rankscores = [encrypt(self.highest_score), encrypt(self.second_score), encrypt(self.third_score)]
+        rankscores = [encrypt(self.highest_score), encrypt(self.second_score), encrypt(self.third_score)]
         rankFile = open("T-rex.txt", 'w')
         for i in range(0,3):
             rankFile.write(f"{rankscores[i]}\n")

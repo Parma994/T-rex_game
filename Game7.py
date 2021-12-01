@@ -1,4 +1,4 @@
-# up에 임시로 die파일 사용.
+# up에 임시로 die 파일 사용.
 
 """
 Function:

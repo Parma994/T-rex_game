@@ -1,5 +1,3 @@
-#up에 임시로 die파일 사용.
-
 '''
 Function:
     크롬 공룡 게임
@@ -11,6 +9,7 @@ import sys
 import random
 import pygame
 from modules import *
+from modules.sprites import dinosaur_2
 
 
 '''main'''
@@ -33,6 +32,7 @@ def main(highest_score, second_score, third_score):
     third_score = third_score
     highest_score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(435, 15), bg_color=cfg.BACKGROUND_COLOR, is_highest=True)
     dino = Dinosaur(cfg.IMAGE_PATHS['dino'])
+    dino_2 = dinosaur_2.Dinosaur_2(cfg.IMAGE_PATHS['dino_2'])
     ground = Ground(cfg.IMAGE_PATHS['ground'], position=(0, cfg.SCREENSIZE[1]))
     cloud_sprites_group = pygame.sprite.Group()
     cactus_sprites_group = pygame.sprite.Group()
@@ -49,6 +49,7 @@ def main(highest_score, second_score, third_score):
     BGM_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
     BGM_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
     #구현 끝
+    
     
     
     # 게임 루프
@@ -76,12 +77,17 @@ def main(highest_score, second_score, third_score):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE or event.key == pygame.K_UP:
+                if event.key == event.key == pygame.K_UP:
                     dino.jump(sounds)
                 elif event.key == pygame.K_DOWN:
                     dino.duck()
+                if event.key == pygame.K_w:
+                    dino_2.jump(sounds)
+                elif event.key == pygame.K_s:
+                    dino_2.duck()
             elif event.type == pygame.KEYUP and event.key == pygame.K_DOWN:
                 dino.unduck()
+                dino_2.unduck()
         screen.fill(cfg.BACKGROUND_COLOR)
         # --무작위 구름 추가
         if len(cloud_sprites_group) < 5 and random.randrange(0, 300) == 10:
@@ -103,6 +109,7 @@ def main(highest_score, second_score, third_score):
                 apple_sprites_group.add(Apple(cfg.IMAGE_PATHS['apple'], position=(900, random.choice(position_ys))))
         # --게임 요소 업데이트
         dino.update()
+        dino_2.update()
         ground.update()
         apple_sprites_group.update()
         cloud_sprites_group.update()
@@ -185,9 +192,24 @@ def main(highest_score, second_score, third_score):
             if pygame.sprite.collide_mask(dino, item):
                 score += 50
                 apple_sprites_group.empty()
+        
+        # --충돌 체크(2)
+        for item in cactus_sprites_group:
+            if pygame.sprite.collide_mask(dino_2, item):
+                dino_2.die(sounds)
+        for item in ptera_sprites_group:
+            if pygame.sprite.collide_mask(dino_2, item):
+                dino_2.die(sounds)
+        for item in apple_sprites_group:
+            if pygame.sprite.collide_mask(dino_2, item):
+                score += 50
+                apple_sprites_group.empty()
+                
+        
                 
         # --게임 요소 화면에 그리기
         dino.draw(screen)
+        dino_2.draw(screen)
         ground.draw(screen)
         cloud_sprites_group.draw(screen)
         cactus_sprites_group.draw(screen)
@@ -201,7 +223,7 @@ def main(highest_score, second_score, third_score):
         pygame.display.update()
         clock.tick(cfg.FPS)
         # --게임 종료 여부 체크
-        if dino.is_dead:
+        if dino.is_dead and dino_2.is_dead:
             BGM.stop()
             BGM_level2.stop()
             BGM_level3.stop()

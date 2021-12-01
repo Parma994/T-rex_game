@@ -26,7 +26,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     for key, value in cfg.AUDIO_PATHS.items():
         sounds[key] = pygame.mixer.Sound(value)
     # 게임 시작화면
-    GameStartInterface(screen, sounds, cfg)
+    show_game_start_interface(screen, sounds, cfg)
     # 게임에 필요한 요소와 변수들 정의
     score = 0
     score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(534, 15), bg_color=cfg.BACKGROUND_COLOR)
@@ -208,10 +208,10 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             bgm_level3.stop()
             bgm_level4.stop()
             bgm_level5.stop()
-            score_board.save_rankscore(score)
+            score_board.save_rank_score(score)
             break
     # 게임 종료 인터페이스
-    return GameEndInterface(screen, cfg), highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game
+    return show_game_end_interface(screen, cfg), highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game
 
 
 # 최종 실행

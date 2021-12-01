@@ -12,11 +12,11 @@ n = p * q
 # 암호화 함수
 def encrypt(original_score):  
     power = math.pow(original_score, key)
-    cipherText = power % n
-    return int(cipherText)
+    cipher_text = power % n
+    return int(cipher_text)
 
 
 # 복호화 함수
-def decrypt(ciphertext):
-    output_score = gmpy2.iroot(ciphertext, key)[0]
+def decrypt(cipher_text):
+    output_score = gmpy2.iroot(cipher_text, key)[0]
     return int(output_score)

@@ -127,7 +127,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 sounds['point'].play()
             if 200 <= score < 300:
                 ground.speed -= 0.3
-                for item in cloud_sprites_group:
+                for item in cloud_sprites_group:  # type: Cloud
                     item.speed -= 3
                 for item in cactus_sprites_group:
                     item.speed -= 0.1
@@ -137,7 +137,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                     item.speed -= 0.1
             if 300 <= score < 500:
                 ground.speed -= 0.4
-                for item in cloud_sprites_group:
+                for item in cloud_sprites_group:  # type: Cloud
                     item.speed -= 4
                 for item in cactus_sprites_group:
                     item.speed -= 0.2
@@ -147,33 +147,33 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                     item.speed -= 0.3
             if 500 <= score < 1000:
                 ground.speed -= 0.5
-                for item in cloud_sprites_group:
+                for item in cloud_sprites_group:  # type: Cloud
                     item.speed -= 5
-                for item in cactus_sprites_group:
+                for item in cactus_sprites_group:  # type: Cactus
                     item.speed -= 0.4
-                for item in ptera_sprites_group:
+                for item in ptera_sprites_group:  # type: Ptera
                     item.speed -= 0.4
-                for item in ptera_sprites_group:
+                for item in ptera_sprites_group:  # type: Ptera
                     item.speed -= 0.5
             if 1000 <= score < 1300:
                 ground.speed -= 0.7
-                for item in cloud_sprites_group:
+                for item in cloud_sprites_group:  # type: Cloud
                     item.speed -= 7
-                for item in cactus_sprites_group:
+                for item in cactus_sprites_group:  # type: Cactus
                     item.speed -= 0.6
-                for item in ptera_sprites_group:
+                for item in ptera_sprites_group:  # type: Ptera
                     item.speed -= 0.6
-                for item in ptera_sprites_group:
+                for item in ptera_sprites_group:  # type: Ptera
                     item.speed -= 0.7
             if 1300 <= score:
                 ground.speed -= 0.8
-                for item in cloud_sprites_group:
+                for item in cloud_sprites_group:  # type: Cloud
                     item.speed -= 0.9
-                for item in cactus_sprites_group:
+                for item in cactus_sprites_group:  # type: Cactus
                     item.speed -= 0.9
-                for item in ptera_sprites_group:
+                for item in ptera_sprites_group:  # type: Ptera
                     item.speed -= 0.9
-                for item in ptera_sprites_group:
+                for item in ptera_sprites_group:  # type: Ptera
                     item.speed -= 0.9
         # --충돌 체크
         for item in cactus_sprites_group:

@@ -15,7 +15,7 @@ from modules import *
 '''main'''
 
 
-def main(highest_score, second_score, third_score):
+def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game):
     # 게임초기화
     pygame.init()
     screen = pygame.display.set_mode(cfg.SCREENSIZE)
@@ -29,9 +29,6 @@ def main(highest_score, second_score, third_score):
     # 게임에 필요한 요소와 변수들 정의
     score = 0
     score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(534, 15), bg_color=cfg.BACKGROUND_COLOR)
-    highest_score = highest_score
-    second_score = second_score
-    third_score = third_score
     highest_score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(435, 15), bg_color=cfg.BACKGROUND_COLOR,
                                      is_highest=True)
     dino = Dinosaur(cfg.IMAGE_PATHS['dino'])
@@ -116,15 +113,15 @@ def main(highest_score, second_score, third_score):
             score_timer = 0
             score += 1
             score = min(score, 99999)
-            if score > highest_score:
-                third_score = second_score
-                second_score = highest_score
-                highest_score = score
-            elif score > second_score:
-                third_score = second_score
-                second_score = score
-            elif score > third_score:
-                third_score = score
+            if score > highest_score_in_a_game:
+                third_score_in_a_game = second_score_in_a_game
+                second_score_in_a_game = highest_score_in_a_game
+                highest_score_in_a_game = score
+            elif score > second_score_in_a_game:
+                third_score_in_a_game = second_score_in_a_game
+                second_score_in_a_game = score
+            elif score > third_score_in_a_game:
+                third_score_in_a_game = score
             if score % 100 == 0:
                 sounds['point'].play()
             if (200 <= score < 300):
@@ -197,7 +194,7 @@ def main(highest_score, second_score, third_score):
         apple_sprites_group.draw(screen)
         ptera_sprites_group.draw(screen)
         score_board.set(score)
-        highest_score_board.set(highest_score)
+        highest_score_board.set(highest_score_in_a_game)
         score_board.draw(screen)
         highest_score_board.draw(screen)
         # --화면 업데이트
@@ -213,7 +210,7 @@ def main(highest_score, second_score, third_score):
             score_board.save_rankscore(score)
             break
     # 게임 종료 인터페이스
-    return GameEndInterface(screen, cfg), highest_score, second_score, third_score
+    return GameEndInterface(screen, cfg), highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game
 
 
 # 최종 실행

@@ -12,4 +12,7 @@ venv/
 .DS_Store
 ._.DS_Store
 **/.DS_Store
-**/._.DS_Store 
+**/._.DS_Store
+
+# 점수 저장 파일
+T-rex.txt

@@ -225,8 +225,8 @@ if __name__ == '__main__':
     while True:
         attempt += 1
         if attempt == 1:
-            flag, highest_score, second_score, third_score = main(highest_score, 0, 0)
+            _, highest_score, second_score, third_score = main(highest_score, 0, 0)
         elif attempt == 2:
-            flag, highest_score, second_score, third_score = main(highest_score, second_score, 0)
+            _, highest_score, second_score, third_score = main(highest_score, second_score, 0)
         else:
-            flag, highest_score, second_score, third_score = main(highest_score, second_score, third_score)
+            _, highest_score, second_score, third_score = main(highest_score, second_score, third_score)

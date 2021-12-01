@@ -41,11 +41,11 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     score_timer = 0
 
     # 음악구현(1)
-    BGM = pygame.mixer.Sound("resources/audios/bgm.mp3")
-    BGM_level2 = pygame.mixer.Sound("resources/audios/bgm_level2.mp3")
-    BGM_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
-    BGM_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
-    BGM_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
+    bgm = pygame.mixer.Sound("resources/audios/bgm.mp3")
+    bgm_level2 = pygame.mixer.Sound("resources/audios/bgm_level2.mp3")
+    bgm_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
+    bgm_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
+    bgm_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
     # 구현 끝
 
     # 게임 루프
@@ -53,19 +53,19 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     while True:
 
         if (score >= 200):
-            BGM.play(-1)
+            bgm.play(-1)
         if (score >= 300):
-            BGM.stop()
-            BGM_level2.play(-1)
+            bgm.stop()
+            bgm_level2.play(-1)
         if (score >= 500):
-            BGM_level2.stop()
-            BGM_level3.play(-1)
+            bgm_level2.stop()
+            bgm_level3.play(-1)
         if (score >= 1000):
-            BGM_level3.stop()
-            BGM_level4.play(-1)
+            bgm_level3.stop()
+            bgm_level4.play(-1)
         if (score >= 1300):
-            BGM_level4.stop()
-            BGM_level5.play(-1)
+            bgm_level4.stop()
+            bgm_level5.play(-1)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -202,11 +202,11 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         clock.tick(cfg.FPS)
         # --게임 종료 여부 체크
         if dino.is_dead:
-            BGM.stop()
-            BGM_level2.stop()
-            BGM_level3.stop()
-            BGM_level4.stop()
-            BGM_level5.stop()
+            bgm.stop()
+            bgm_level2.stop()
+            bgm_level3.stop()
+            bgm_level4.stop()
+            bgm_level5.stop()
             score_board.save_rankscore(score)
             break
     # 게임 종료 인터페이스

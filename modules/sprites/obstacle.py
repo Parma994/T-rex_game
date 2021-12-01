@@ -1,16 +1,9 @@
-'''
-Function:
-    定义障碍物类
-Author:
-    Charles
-微信公众号:
-    Charles的皮卡丘
-'''
 import random
 import pygame
 
-
 '''선인장'''
+
+
 class Cactus(pygame.sprite.Sprite):
     def __init__(self, imagepaths, position=(600, 147), sizes=[(40, 40), (40, 40)], **kwargs):
         pygame.sprite.Sprite.__init__(self)
@@ -56,10 +49,14 @@ class Ptera(pygame.sprite.Sprite):
         self.speed = -10
         self.refresh_rate = 11
         self.refresh_counter = 0
+
     '''화면에 그리기'''
+
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+
     '''업데이트'''
+
     def update(self):
         if self.refresh_counter % self.refresh_rate == 0:
             self.refresh_counter = 0
@@ -69,7 +66,9 @@ class Ptera(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
         self.refresh_counter += 1
+
     '''현재 상태의 그림 불러오기'''
+
     def loadImage(self):
         self.image = self.images[self.image_idx]
         rect = self.image.get_rect()
@@ -77,7 +76,8 @@ class Ptera(pygame.sprite.Sprite):
         self.rect = rect
         self.mask = pygame.mask.from_surface(self.image)
 
-#사과
+
+# 사과
 class Apple(pygame.sprite.Sprite):
     def __init__(self, imagepath, position, size=(46, 40), **kwargs):
         pygame.sprite.Sprite.__init__(self)
@@ -95,10 +95,14 @@ class Apple(pygame.sprite.Sprite):
         self.speed = -10
         self.refresh_rate = 11
         self.refresh_counter = 0
+
     '''화면에 그리기'''
+
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+
     '''업데이트'''
+
     def update(self):
         if self.refresh_counter % self.refresh_rate == 0:
             self.refresh_counter = 0
@@ -108,7 +112,9 @@ class Apple(pygame.sprite.Sprite):
         if self.rect.right < 0:
             self.kill()
         self.refresh_counter += 1
+
     '''현재 상태의 그림 불러오기'''
+
     def loadImage(self):
         self.image = self.images[self.image_idx]
         rect = self.image.get_rect()

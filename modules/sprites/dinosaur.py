@@ -1,15 +1,8 @@
-'''
-Function:
-    小恐龙类
-Author:
-    Charles
-微信公众号:
-    Charles的皮卡丘
-'''
 import pygame
 
-
 '''공룡'''
+
+
 class Dinosaur(pygame.sprite.Sprite):
     def __init__(self, imagepaths, position=(40, 147), size=[(44, 47), (59, 47)], **kwargs):
         pygame.sprite.Sprite.__init__(self)

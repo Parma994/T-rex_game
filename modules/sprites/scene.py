@@ -1,17 +1,10 @@
-'''
-Function:
-    定义场景元素(地板, 云等)
-Author:
-    Charles
-微信公众号:
-    Charles的皮卡丘
-'''
 import pygame
 import os
 from .rsa import encrypt, decrypt
 
-
 '''바닥'''
+
+
 class Ground(pygame.sprite.Sprite):
     def __init__(self, imagepath, position, **kwargs):
         pygame.sprite.Sprite.__init__(self)

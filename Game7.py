@@ -11,6 +11,7 @@ import sys
 import random
 import pygame
 from modules import *
+from modules.sprites.obstacle import Apple
 
 '''main'''
 
@@ -52,18 +53,18 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     clock = pygame.time.Clock()
     while True:
 
-        if (score >= 200):
+        if score >= 200:
             bgm.play(-1)
-        if (score >= 300):
+        if score >= 300:
             bgm.stop()
             bgm_level2.play(-1)
-        if (score >= 500):
+        if score >= 500:
             bgm_level2.stop()
             bgm_level3.play(-1)
-        if (score >= 1000):
+        if score >= 1000:
             bgm_level3.stop()
             bgm_level4.play(-1)
-        if (score >= 1300):
+        if score >= 1300:
             bgm_level4.stop()
             bgm_level5.play(-1)
 
@@ -91,7 +92,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             add_obstacle_timer = 0
             random_value = random.randrange(0, 11)
             # print(random_value)
-            if random_value >= 7 and random_value <= 10:
+            if 7 <= random_value <= 10:
                 cactus_sprites_group.add(Cactus(cfg.IMAGE_PATHS['cacti']))
             elif random_value <= 5:
                 position_ys = [cfg.SCREENSIZE[1] * 0.80, cfg.SCREENSIZE[1] * 0.65, cfg.SCREENSIZE[1] * 0.60,
@@ -124,7 +125,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 third_score_in_a_game = score
             if score % 100 == 0:
                 sounds['point'].play()
-            if (200 <= score < 300):
+            if 200 <= score < 300:
                 ground.speed -= 0.3
                 for item in cloud_sprites_group:
                     item.speed -= 3
@@ -134,7 +135,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                     item.speed -= 0.1
                 for item in apple_sprites_group:
                     item.speed -= 0.1
-            if (300 <= score < 500):
+            if 300 <= score < 500:
                 ground.speed -= 0.4
                 for item in cloud_sprites_group:
                     item.speed -= 4
@@ -144,7 +145,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                     item.speed -= 0.2
                 for item in apple_sprites_group:
                     item.speed -= 0.3
-            if (500 <= score < 1000):
+            if 500 <= score < 1000:
                 ground.speed -= 0.5
                 for item in cloud_sprites_group:
                     item.speed -= 5
@@ -154,7 +155,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                     item.speed -= 0.4
                 for item in ptera_sprites_group:
                     item.speed -= 0.5
-            if (1000 <= score < 1300):
+            if 1000 <= score < 1300:
                 ground.speed -= 0.7
                 for item in cloud_sprites_group:
                     item.speed -= 7
@@ -164,7 +165,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                     item.speed -= 0.6
                 for item in ptera_sprites_group:
                     item.speed -= 0.7
-            if (1300 <= score):
+            if 1300 <= score:
                 ground.speed -= 0.8
                 for item in cloud_sprites_group:
                     item.speed -= 0.9

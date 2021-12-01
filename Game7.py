@@ -1,19 +1,20 @@
-#up에 임시로 die파일 사용.
+# up에 임시로 die파일 사용.
 
-'''
+"""
 Function:
     크롬 공룡 게임
 Author:
     Charles
-'''
+"""
 import cfg
 import sys
 import random
 import pygame
 from modules import *
 
-
 '''main'''
+
+
 def main(highest_score, second_score, third_score):
     # 게임초기화
     pygame.init()
@@ -31,7 +32,8 @@ def main(highest_score, second_score, third_score):
     highest_score = highest_score
     second_score = second_score
     third_score = third_score
-    highest_score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(435, 15), bg_color=cfg.BACKGROUND_COLOR, is_highest=True)
+    highest_score_board = Scoreboard(cfg.IMAGE_PATHS['numbers'], position=(435, 15), bg_color=cfg.BACKGROUND_COLOR,
+                                     is_highest=True)
     dino = Dinosaur(cfg.IMAGE_PATHS['dino'])
     ground = Ground(cfg.IMAGE_PATHS['ground'], position=(0, cfg.SCREENSIZE[1]))
     cloud_sprites_group = pygame.sprite.Group()
@@ -40,37 +42,34 @@ def main(highest_score, second_score, third_score):
     apple_sprites_group = pygame.sprite.Group()
     add_obstacle_timer = 0
     score_timer = 0
-    
-    
-    #음악구현(1)
+
+    # 음악구현(1)
     BGM = pygame.mixer.Sound("resources/audios/bgm.mp3")
     BGM_level2 = pygame.mixer.Sound("resources/audios/bgm_level2.mp3")
     BGM_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
     BGM_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
     BGM_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
-    #구현 끝
-    
-    
+    # 구현 끝
+
     # 게임 루프
     clock = pygame.time.Clock()
     while True:
-        
-        if (score>=200):
+
+        if (score >= 200):
             BGM.play(-1)
-        if (score>=300):
+        if (score >= 300):
             BGM.stop()
             BGM_level2.play(-1)
-        if (score>=500):
+        if (score >= 500):
             BGM_level2.stop()
             BGM_level3.play(-1)
-        if (score>=1000):
+        if (score >= 1000):
             BGM_level3.stop()
             BGM_level4.play(-1)
-        if (score>=1300):
+        if (score >= 1300):
             BGM_level4.stop()
-            BGM_level5.play(-1) 
-            
-            
+            BGM_level5.play(-1)
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -85,21 +84,25 @@ def main(highest_score, second_score, third_score):
         screen.fill(cfg.BACKGROUND_COLOR)
         # --무작위 구름 추가
         if len(cloud_sprites_group) < 5 and random.randrange(0, 300) == 10:
-            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(30, 75))))
-            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 35))))
+            cloud_sprites_group.add(
+                Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(30, 75))))
+            cloud_sprites_group.add(
+                Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 35))))
         # --선인장/익룡 무작위 추가
         add_obstacle_timer += 1
         if add_obstacle_timer > random.randrange(60, 150):
             add_obstacle_timer = 0
             random_value = random.randrange(0, 11)
-            #print(random_value)
+            # print(random_value)
             if random_value >= 7 and random_value <= 10:
                 cactus_sprites_group.add(Cactus(cfg.IMAGE_PATHS['cacti']))
             elif random_value <= 5:
-                position_ys = [cfg.SCREENSIZE[1]*0.80, cfg.SCREENSIZE[1]*0.65, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.20]
+                position_ys = [cfg.SCREENSIZE[1] * 0.80, cfg.SCREENSIZE[1] * 0.65, cfg.SCREENSIZE[1] * 0.60,
+                               cfg.SCREENSIZE[1] * 0.20]
                 ptera_sprites_group.add(Ptera(cfg.IMAGE_PATHS['ptera'], position=(900, random.choice(position_ys))))
             elif random_value == 6:
-                position_ys = [cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.60, cfg.SCREENSIZE[1]*0.40, cfg.SCREENSIZE[1]*0.10]
+                position_ys = [cfg.SCREENSIZE[1] * 0.60, cfg.SCREENSIZE[1] * 0.60, cfg.SCREENSIZE[1] * 0.40,
+                               cfg.SCREENSIZE[1] * 0.10]
                 apple_sprites_group.add(Apple(cfg.IMAGE_PATHS['apple'], position=(900, random.choice(position_ys))))
         # --게임 요소 업데이트
         dino.update()
@@ -109,7 +112,7 @@ def main(highest_score, second_score, third_score):
         cactus_sprites_group.update()
         ptera_sprites_group.update()
         score_timer += 1
-        if score_timer > (cfg.FPS//12):
+        if score_timer > (cfg.FPS // 12):
             score_timer = 0
             score += 1
             score = min(score, 99999)
@@ -124,7 +127,7 @@ def main(highest_score, second_score, third_score):
                 third_score = score
             if score % 100 == 0:
                 sounds['point'].play()
-            if (200<=score<300):
+            if (200 <= score < 300):
                 ground.speed -= 0.3
                 for item in cloud_sprites_group:
                     item.speed -= 3
@@ -133,47 +136,47 @@ def main(highest_score, second_score, third_score):
                 for item in ptera_sprites_group:
                     item.speed -= 0.1
                 for item in apple_sprites_group:
-                    item.speed-=0.1
-            if (300<=score<500):
-                ground.speed-=0.4
+                    item.speed -= 0.1
+            if (300 <= score < 500):
+                ground.speed -= 0.4
                 for item in cloud_sprites_group:
-                    item.speed-=4
+                    item.speed -= 4
                 for item in cactus_sprites_group:
-                    item.speed-=0.2
+                    item.speed -= 0.2
                 for item in ptera_sprites_group:
-                    item.speed-=0.2
+                    item.speed -= 0.2
                 for item in apple_sprites_group:
-                    item.speed-=0.3
-            if (500<=score<1000):
-                ground.speed-=0.5
+                    item.speed -= 0.3
+            if (500 <= score < 1000):
+                ground.speed -= 0.5
                 for item in cloud_sprites_group:
-                    item.speed-=5
+                    item.speed -= 5
                 for item in cactus_sprites_group:
-                    item.speed-=0.4
+                    item.speed -= 0.4
                 for item in ptera_sprites_group:
-                    item.speed-=0.4
+                    item.speed -= 0.4
                 for item in ptera_sprites_group:
-                    item.speed-=0.5
-            if (1000<=score<1300):
-                ground.speed-=0.7
+                    item.speed -= 0.5
+            if (1000 <= score < 1300):
+                ground.speed -= 0.7
                 for item in cloud_sprites_group:
-                    item.speed-=7
+                    item.speed -= 7
                 for item in cactus_sprites_group:
-                    item.speed-=0.6
+                    item.speed -= 0.6
                 for item in ptera_sprites_group:
-                    item.speed-=0.6
+                    item.speed -= 0.6
                 for item in ptera_sprites_group:
-                    item.speed-=0.7
-            if (1300<=score):
-                ground.speed-=0.8
+                    item.speed -= 0.7
+            if (1300 <= score):
+                ground.speed -= 0.8
                 for item in cloud_sprites_group:
-                    item.speed-=0.9
+                    item.speed -= 0.9
                 for item in cactus_sprites_group:
-                    item.speed-=0.9
+                    item.speed -= 0.9
                 for item in ptera_sprites_group:
-                    item.speed-=0.9
+                    item.speed -= 0.9
                 for item in ptera_sprites_group:
-                    item.speed-=0.9
+                    item.speed -= 0.9
         # --충돌 체크
         for item in cactus_sprites_group:
             if pygame.sprite.collide_mask(dino, item):
@@ -185,7 +188,7 @@ def main(highest_score, second_score, third_score):
             if pygame.sprite.collide_mask(dino, item):
                 score += 50
                 apple_sprites_group.empty()
-                
+
         # --게임 요소 화면에 그리기
         dino.draw(screen)
         ground.draw(screen)
@@ -213,7 +216,7 @@ def main(highest_score, second_score, third_score):
     return GameEndInterface(screen, cfg), highest_score, second_score, third_score
 
 
-#최종 실행
+# 최종 실행
 if __name__ == '__main__':
     highest_score = 0
     second_score = 0

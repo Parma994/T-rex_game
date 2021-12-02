@@ -4,7 +4,6 @@ from .rsa import encrypt, decrypt
 
 from pygame.surface import Surface
 
-from .rsa import encrypt, decrypt
 
 '''바닥'''
 

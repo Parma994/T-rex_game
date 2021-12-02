@@ -1,12 +1,12 @@
-#설정파일
+# 설정파일
 import os
 
 
-#화면크기
+# 화면크기
 SCREENSIZE = (600, 150)
-#FPS(속도)
+# FPS(속도)
 FPS = 60
-#오디오 파일 위치
+# 오디오 파일 위치
 AUDIO_PATHS = {
     'die': os.path.join(os.getcwd(), 'resources/audios/die.wav'),
     'eaten': os.path.join(os.getcwd(), 'resources/audios/eating.wav'),
@@ -18,7 +18,7 @@ AUDIO_PATHS = {
     'bgm_level4': os.path.join(os.getcwd(), 'resources/audios/bgm_level4.mp3'),
     'bgm_level5': os.path.join(os.getcwd(), 'resources/audios/bgm_level5.mp3')
 }
-#그림 파일 위치
+# 그림 파일 위치
 IMAGE_PATHS = {
     'apple': os.path.join(os.getcwd(), 'resources/images/apple.png'),
     'cacti': [
@@ -41,7 +41,7 @@ IMAGE_PATHS = {
     'replay': os.path.join(os.getcwd(), 'resources/images/replay.png')
 }
 
-#배경색상
+# 배경색상
 BACKGROUND_COLOR = (235, 235, 235)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

@@ -1,17 +1,10 @@
-'''
-Function:
-    游戏结束界面
-Author:
-    Charles
-微信公众号:
-    Charles的皮卡丘
-'''
 import sys
 import pygame
 
-
 '''게임 종료 인터페이스'''
-def GameEndInterface(screen, cfg):
+
+
+def show_game_end_interface(screen, cfg):
     replay_image = pygame.image.load(cfg.IMAGE_PATHS['replay'])
     replay_image = pygame.transform.scale(replay_image, (35, 31))
     replay_image_rect = replay_image.get_rect()

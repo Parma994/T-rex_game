@@ -30,6 +30,10 @@ IMAGE_PATHS = {
         os.path.join(os.getcwd(), 'resources/images/dino.png'),
         os.path.join(os.getcwd(), 'resources/images/dino_ducking.png')
     ],
+    'dino_2': [
+        os.path.join(os.getcwd(), 'resources/images/dino_2.png'),
+        os.path.join(os.getcwd(), 'resources/images/dino_ducking_2.png')
+    ],
     'gameover': os.path.join(os.getcwd(), 'resources/images/gameover.png'),
     'ground': os.path.join(os.getcwd(), 'resources/images/ground.png'),
     'numbers': os.path.join(os.getcwd(), 'resources/images/numbers.png'),

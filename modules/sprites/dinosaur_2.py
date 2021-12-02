@@ -10,8 +10,8 @@ import pygame
 
 
 '''공룡'''
-class Dinosaur(pygame.sprite.Sprite):
-    def __init__(self, imagepaths, position=(40, 147), size=[(44, 47), (59, 47)], **kwargs):
+class Dinosaur_2(pygame.sprite.Sprite):
+    def __init__(self, imagepaths, position=(60, 147), size=[(64, 47), (79, 47)], **kwargs):
         pygame.sprite.Sprite.__init__(self)
         # 모든 그림 가져오기
         self.images = []

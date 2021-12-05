@@ -11,7 +11,7 @@ import sys
 import random
 import pygame
 from modules import *
-from modules.sprites.obstacle import Apple
+from modules.sprites.obstacle import Apple #???
 from modules.sprites import dinosaur_2
 
 

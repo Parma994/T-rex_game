@@ -16,7 +16,8 @@ AUDIO_PATHS = {
     'bgm_level2': os.path.join(os.getcwd(), 'resources/audios/bgm_level2.mp3'),
     'bgm_level3': os.path.join(os.getcwd(), 'resources/audios/bgm_level3.mp3'),
     'bgm_level4': os.path.join(os.getcwd(), 'resources/audios/bgm_level4.mp3'),
-    'bgm_level5': os.path.join(os.getcwd(), 'resources/audios/bgm_level5.mp3')
+    'bgm_level5': os.path.join(os.getcwd(), 'resources/audios/bgm_level5.mp3'),
+    'bgm_level6': os.path.join(os.getcwd(), 'resources/audios/bgm_level6.mp3')
 }
 # 그림 파일 위치
 IMAGE_PATHS = {

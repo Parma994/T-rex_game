@@ -51,6 +51,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     BGM_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
     BGM_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
     BGM_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
+    BGM_level6 = pygame.mixer.Sound("resources/audios/bgm_level6.mp3")
     #구현 끝
     
     
@@ -70,16 +71,16 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
 
                 if event.key == pygame.K_s:
                     setting_mode = 1
-                    print("mode 1")
+                    print("single mode")
                     print(setting_mode)
                 elif event.key == pygame.K_m:
                     setting_mode = 2
-                    print("mode 2")
+                    print("multi mode")
                     print(setting_mode)
 
 
     clock = pygame.time.Clock()
-    pygame.display.set_caption('T-Rex Rush —— 오픈소스 2조')
+    pygame.display.set_caption('T-Rex Rush —— 오픈소스SW 2조')
 
     while setting_mode==1:
         if (score>=200):
@@ -96,6 +97,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         if (score>=1300):
             BGM_level4.stop()
             BGM_level5.play(-1) 
+        if (score>=1600):
+            BGM_level5.stop()
+            BGM_level6.play(-1)
             
             
         for event in pygame.event.get():
@@ -113,9 +117,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         # --무작위 구름 추가
         if len(cloud_sprites_group) < 5 and random.randrange(0, 300) == 10:
             cloud_sprites_group.add(
-                Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(30, 75))))
+                Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(35, 75))))
             cloud_sprites_group.add(
-                Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 35))))
+                Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 25))))
         # --선인장/익룡 무작위 추가
         add_obstacle_timer += 1
         if add_obstacle_timer > random.randrange(60, 150):
@@ -155,56 +159,66 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 third_score_in_a_game = score
             if score % 100 == 0:
                 sounds['point'].play()
-            if 200 <= score < 300:
+            if (200<=score<299):
                 ground.speed -= 0.3
-                for item in cloud_sprites_group:  # type: Cloud
-                    item.speed -= 3
-                for item in cactus_sprites_group:
-                    item.speed -= 0.1
-                for item in ptera_sprites_group:
-                    item.speed -= 0.1
-                for item in apple_sprites_group:
-                    item.speed -= 0.1
-            if 300 <= score < 500:
-                ground.speed -= 0.4
-                for item in cloud_sprites_group:  # type: Cloud
-                    item.speed -= 4
-                for item in cactus_sprites_group:
-                    item.speed -= 0.2
-                for item in ptera_sprites_group:
-                    item.speed -= 0.2
-                for item in apple_sprites_group:
+                for item in cloud_sprites_group:
                     item.speed -= 0.3
-            if 500 <= score < 1000:
-                ground.speed -= 0.5
-                for item in cloud_sprites_group:  # type: Cloud
-                    item.speed -= 5
-                for item in cactus_sprites_group:  # type: Cactus
-                    item.speed -= 0.4
-                for item in ptera_sprites_group:  # type: Ptera
-                    item.speed -= 0.4
-                for item in ptera_sprites_group:  # type: Ptera
-                    item.speed -= 0.5
-            if 1000 <= score < 1300:
-                ground.speed -= 0.7
-                for item in cloud_sprites_group:  # type: Cloud
-                    item.speed -= 7
-                for item in cactus_sprites_group:  # type: Cactus
-                    item.speed -= 0.6
-                for item in ptera_sprites_group:  # type: Ptera
-                    item.speed -= 0.6
-                for item in ptera_sprites_group:  # type: Ptera
-                    item.speed -= 0.7
-            if 1300 <= score:
-                ground.speed -= 0.8
-                for item in cloud_sprites_group:  # type: Cloud
-                    item.speed -= 0.9
-                for item in cactus_sprites_group:  # type: Cactus
-                    item.speed -= 0.9
-                for item in ptera_sprites_group:  # type: Ptera
-                    item.speed -= 0.9
-                for item in ptera_sprites_group:  # type: Ptera
-                    item.speed -= 0.9
+                for item in cactus_sprites_group:
+                    item.speed -= 0.1
+                for item in ptera_sprites_group:
+                    item.speed -= 0.1
+                for item in apple_sprites_group:
+                    item.speed-=0.1
+            if (300<=score<499):
+                ground.speed-=0.4
+                for item in cloud_sprites_group:
+                    item.speed-=0.4
+                for item in cactus_sprites_group:
+                    item.speed-=0.2
+                for item in ptera_sprites_group:
+                    item.speed-=0.2
+                for item in apple_sprites_group:
+                    item.speed-=0.3
+            if (500<=score<999):
+                ground.speed-=0.5
+                for item in cloud_sprites_group:
+                    item.speed-=0.5
+                for item in cactus_sprites_group:
+                    item.speed-=0.3
+                for item in ptera_sprites_group:
+                    item.speed-=0.3
+                for item in apple_sprites_group:
+                    item.speed-=0.4
+            if (1000<=score<1299):
+                ground.speed-=0.7
+                for item in cloud_sprites_group:
+                    item.speed-=0.6
+                for item in cactus_sprites_group:
+                    item.speed-=0.5
+                for item in ptera_sprites_group:
+                    item.speed-=0.5
+                for item in apple_sprites_group:
+                    item.speed-=0.6
+            if (1300<=score<1599):
+                ground.speed-=0.8
+                for item in cloud_sprites_group:
+                    item.speed-=0.7
+                for item in cactus_sprites_group:
+                    item.speed-=0.7
+                for item in ptera_sprites_group:
+                    item.speed-=0.7
+                for item in apple_sprites_group:
+                    item.speed-=0.8
+            if (1600<=score):
+                ground.speed-=0.9
+                for item in cloud_sprites_group:
+                    item.speed-=0.8
+                for item in cactus_sprites_group:
+                    item.speed-=0.8
+                for item in ptera_sprites_group:
+                    item.speed-=0.8
+                for item in apple_sprites_group:
+                    item.speed-=0.9
         # --충돌 체크
         for item in cactus_sprites_group:
             if pygame.sprite.collide_mask(dino, item):
@@ -238,6 +252,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             BGM_level3.stop()
             BGM_level4.stop()
             BGM_level5.stop()
+            BGM_level6.stop()
             score_board.save_rank_score(score)
             break
     
@@ -259,7 +274,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         if (score>=1300):
             BGM_level4.stop()
             BGM_level5.play(-1) 
-            
+        if (score>=1600):
+            BGM_level5.stop()
+            BGM_level6.play(-1)    
             
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -280,8 +297,8 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         screen.fill(cfg.BACKGROUND_COLOR)
         # --무작위 구름 추가
         if len(cloud_sprites_group) < 5 and random.randrange(0, 300) == 10:
-            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(30, 75))))
-            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 35))))
+            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(35, 75))))
+            cloud_sprites_group.add(Cloud(cfg.IMAGE_PATHS['cloud'], position=(cfg.SCREENSIZE[0], random.randrange(0, 25))))
         # --선인장/익룡 무작위 추가
         add_obstacle_timer += 1
         if add_obstacle_timer > random.randrange(60, 150):
@@ -320,55 +337,65 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 third_score = score
             if score % 100 == 0:
                 sounds['point'].play()
-            if (200<=score<300):
+            if (200<=score<299):
                 ground.speed -= 0.3
                 for item in cloud_sprites_group:
-                    item.speed -= 3
+                    item.speed -= 0.3
                 for item in cactus_sprites_group:
                     item.speed -= 0.1
                 for item in ptera_sprites_group:
                     item.speed -= 0.1
                 for item in apple_sprites_group:
                     item.speed-=0.1
-            if (300<=score<500):
+            if (300<=score<499):
                 ground.speed-=0.4
                 for item in cloud_sprites_group:
-                    item.speed-=4
+                    item.speed-=0.4
                 for item in cactus_sprites_group:
                     item.speed-=0.2
                 for item in ptera_sprites_group:
                     item.speed-=0.2
                 for item in apple_sprites_group:
                     item.speed-=0.3
-            if (500<=score<1000):
+            if (500<=score<999):
                 ground.speed-=0.5
                 for item in cloud_sprites_group:
-                    item.speed-=5
-                for item in cactus_sprites_group:
-                    item.speed-=0.4
-                for item in ptera_sprites_group:
-                    item.speed-=0.4
-                for item in ptera_sprites_group:
                     item.speed-=0.5
-            if (1000<=score<1300):
+                for item in cactus_sprites_group:
+                    item.speed-=0.3
+                for item in ptera_sprites_group:
+                    item.speed-=0.3
+                for item in apple_sprites_group:
+                    item.speed-=0.4
+            if (1000<=score<1299):
                 ground.speed-=0.7
                 for item in cloud_sprites_group:
-                    item.speed-=7
+                    item.speed-=0.6
                 for item in cactus_sprites_group:
-                    item.speed-=0.6
+                    item.speed-=0.5
                 for item in ptera_sprites_group:
+                    item.speed-=0.5
+                for item in apple_sprites_group:
                     item.speed-=0.6
-                for item in ptera_sprites_group:
-                    item.speed-=0.7
-            if (1300<=score):
+            if (1300<=score<1599):
                 ground.speed-=0.8
                 for item in cloud_sprites_group:
-                    item.speed-=0.9
+                    item.speed-=0.7
                 for item in cactus_sprites_group:
-                    item.speed-=0.9
+                    item.speed-=0.7
                 for item in ptera_sprites_group:
-                    item.speed-=0.9
+                    item.speed-=0.7
+                for item in apple_sprites_group:
+                    item.speed-=0.8
+            if (1600<=score):
+                ground.speed-=0.9
+                for item in cloud_sprites_group:
+                    item.speed-=0.8
+                for item in cactus_sprites_group:
+                    item.speed-=0.8
                 for item in ptera_sprites_group:
+                    item.speed-=0.8
+                for item in apple_sprites_group:
                     item.speed-=0.9
         # --충돌 체크
         for item in cactus_sprites_group:
@@ -418,6 +445,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             BGM_level3.stop()
             BGM_level4.stop()
             BGM_level5.stop()
+            BGM_level6.stop()
             score_board.save_rankscore(score)
             break
 

@@ -29,7 +29,7 @@ pip install pygame
 2.   
 <pre>
 <code>
-pip install C:\Users\user\Downloads\{다운로드한 파일명}
+pip install {다운로드한 파일경로}
 </code>
 </pre>    
        

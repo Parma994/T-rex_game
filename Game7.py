@@ -11,7 +11,7 @@ import sys
 import random
 import pygame
 from modules import *
-from modules.sprites.obstacle import Apple #???
+from modules.sprites.obstacle import Apple 
 from modules.sprites import dinosaur_2
 
 
@@ -46,13 +46,12 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     
     
     #음악구현(1)
-    BGM = pygame.mixer.Sound("resources/audios/bgm.mp3")
-    BGM_level2 = pygame.mixer.Sound("resources/audios/bgm_level2.mp3")
-    BGM_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
-    BGM_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
-    BGM_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
-    BGM_level6 = pygame.mixer.Sound("resources/audios/bgm_level6.mp3")
-    #구현 끝
+    bgm = pygame.mixer.Sound("resources/audios/bgm.mp3")
+    bgm_level2 = pygame.mixer.Sound("resources/audios/bgm_level2.mp3")
+    bgm_level3 = pygame.mixer.Sound("resources/audios/bgm_level3.mp3")
+    bgm_level4 = pygame.mixer.Sound("resources/audios/bgm_level4.mp3")
+    bgm_level5 = pygame.mixer.Sound("resources/audios/bgm_level5.mp3")
+    bgm_level6 = pygame.mixer.Sound("resources/audios/bgm_level6.mp3")
     
     
     
@@ -84,22 +83,22 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
 
     while setting_mode==1:
         if (score>=200):
-            BGM.play(-1)
+            bgm.play(-1)
         if (score>=300):
-            BGM.stop()
-            BGM_level2.play(-1)
+            bgm.stop()
+            bgm_level2.play(-1)
         if (score>=500):
-            BGM_level2.stop()
-            BGM_level3.play(-1)
+            bgm_level2.stop()
+            bgm_level3.play(-1)
         if (score>=1000):
-            BGM_level3.stop()
-            BGM_level4.play(-1)
+            bgm_level3.stop()
+            bgm_level4.play(-1)
         if (score>=1300):
-            BGM_level4.stop()
-            BGM_level5.play(-1) 
+            bgm_level4.stop()
+            bgm_level5.play(-1) 
         if (score>=1600):
-            BGM_level5.stop()
-            BGM_level6.play(-1)
+            bgm_level5.stop()
+            bgm_level6.play(-1)
             
             
         for event in pygame.event.get():
@@ -247,12 +246,12 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         clock.tick(cfg.FPS)
         # --게임 종료 여부 체크
         if dino.is_dead:
-            BGM.stop()
-            BGM_level2.stop()
-            BGM_level3.stop()
-            BGM_level4.stop()
-            BGM_level5.stop()
-            BGM_level6.stop()
+            bgm.stop()
+            bgm_level2.stop()
+            bgm_level3.stop()
+            bgm_level4.stop()
+            bgm_level5.stop()
+            bgm_level6.stop()
             score_board.save_rank_score(score)
             break
     
@@ -261,22 +260,22 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     while setting_mode==2:
         
         if (score>=200):
-            BGM.play(-1)
+            bgm.play(-1)
         if (score>=300):
-            BGM.stop()
-            BGM_level2.play(-1)
+            bgm.stop()
+            bgm_level2.play(-1)
         if (score>=500):
-            BGM_level2.stop()
-            BGM_level3.play(-1)
+            bgm_level2.stop()
+            bgm_level3.play(-1)
         if (score>=1000):
-            BGM_level3.stop()
-            BGM_level4.play(-1)
+            bgm_level3.stop()
+            bgm_level4.play(-1)
         if (score>=1300):
-            BGM_level4.stop()
-            BGM_level5.play(-1) 
+            bgm_level4.stop()
+            bgm_level5.play(-1) 
         if (score>=1600):
-            BGM_level5.stop()
-            BGM_level6.play(-1)    
+            bgm_level5.stop()
+            bgm_level6.play(-1)    
             
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -326,15 +325,15 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             score_timer = 0
             score += 1
             score = min(score, 99999)
-            if score > highest_score:
-                third_score = second_score
-                second_score = highest_score
-                highest_score = score
-            elif score > second_score:
-                third_score = second_score
-                second_score = score
-            elif score > third_score:
-                third_score = score
+            if score > highest_score_in_a_game:
+                third_score_in_a_game = second_score_in_a_game
+                second_score_in_a_game = highest_score_in_a_game
+                highest_score_in_a_game = score
+            elif score > second_score_in_a_game:
+                third_score_in_a_game = second_score_in_a_game
+                second_score_in_a_game = score
+            elif score > third_score_in_a_game:
+                third_score_in_a_game = score
             if score % 100 == 0:
                 sounds['point'].play()
             if (200<=score<299):
@@ -432,7 +431,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         apple_sprites_group.draw(screen)
         ptera_sprites_group.draw(screen)
         score_board.set(score)
-        highest_score_board.set(highest_score)
+        highest_score_board.set(highest_score_in_a_game)
         score_board.draw(screen)
         highest_score_board.draw(screen)
         # --화면 업데이트
@@ -440,12 +439,12 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         clock.tick(cfg.FPS)
         # --게임 종료 여부 체크
         if dino.is_dead and dino_2.is_dead:
-            BGM.stop()
-            BGM_level2.stop()
-            BGM_level3.stop()
-            BGM_level4.stop()
-            BGM_level5.stop()
-            BGM_level6.stop()
+            bgm.stop()
+            bgm_level2.stop()
+            bgm_level3.stop()
+            bgm_level4.stop()
+            bgm_level5.stop()
+            bgm_level6.stop()
             score_board.save_rankscore(score)
             break
 

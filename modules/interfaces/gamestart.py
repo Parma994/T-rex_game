@@ -3,7 +3,7 @@ import pygame
 import os
 
 from ..sprites import Dinosaur
-from ..sprites import encrypt, decrypt
+# from ..sprites import encrypt, decrypt
 
 '''게임시작 인터페이스'''
 
@@ -28,13 +28,16 @@ def show_game_start_interface(screen, sounds, cfg):
         if len(rankers) >= 3:
             third_score = int(rankers[2].strip())
         rank_file.close()
-    text1_title = text_font.render(f"1st  {decrypt(highest_score)}", True, (83, 83, 83))
+    # text1_title = text_font.render(f"1st  {decrypt(highest_score)}", True, (83, 83, 83))
+    text1_title = text_font.render(f"1st  {highest_score}", True, (83, 83, 83))
     text1_rect = text1_title.get_rect()
     text1_rect.left, text1_rect.top = cfg.SCREENSIZE[0] * 0.8, cfg.SCREENSIZE[1] * 0.1
-    text2_title = text_font.render(f"2nd {decrypt(second_score)}", True, (83, 83, 83))
+    # text2_title = text_font.render(f"2nd {decrypt(second_score)}", True, (83, 83, 83))
+    text2_title = text_font.render(f"2nd {second_score}", True, (83, 83, 83))
     text2_rect = text2_title.get_rect()
     text2_rect.left, text2_rect.top = cfg.SCREENSIZE[0] * 0.8, cfg.SCREENSIZE[1] * 0.3
-    text3_title = text_font.render(f"3rd {decrypt(third_score)}", True, (83, 83, 83))
+    # text3_title = text_font.render(f"3rd {decrypt(third_score)}", True, (83, 83, 83))
+    text3_title = text_font.render(f"3rd {third_score}", True, (83, 83, 83))
     text3_rect = text1_title.get_rect()
     text3_rect.left, text3_rect.top = cfg.SCREENSIZE[0] * 0.8, cfg.SCREENSIZE[1] * 0.5
 

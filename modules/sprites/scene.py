@@ -1,6 +1,6 @@
 import pygame
 import os
-# from .rsa import encrypt, decrypt
+from .rsa import encrypt, decrypt
 
 from pygame.surface import Surface
 
@@ -112,14 +112,11 @@ class Scoreboard(pygame.sprite.Sprite):
             rank_file = open("T-rex.txt", 'r')
             rankers = rank_file.readlines()
             if len(rankers) >= 1:
-                # self.highest_score = decrypt(int(rankers[0].strip()))
-                self.highest_score = int(rankers[0].strip())
+                self.highest_score = decrypt(int(rankers[0].strip()))
             if len(rankers) >= 2:
-                # self.highest_score = decrypt(int(rankers[1].strip()))
-                self.second_score = int(rankers[1].strip())
+                self.highest_score = decrypt(int(rankers[1].strip()))
             if len(rankers) >= 3:
-                # self.highest_score = decrypt(int(rankers[2].strip()))
-                self.third_score = int(rankers[2].strip())
+                self.highest_score = decrypt(int(rankers[2].strip()))
             rank_file.close()
         return self.highest_score, self.second_score, self.third_score
 
@@ -136,8 +133,7 @@ class Scoreboard(pygame.sprite.Sprite):
             self.second_score = score
         elif score > prev_third_score:
             self.third_score = score
-        # rankers = [encrypt(self.highest_score), encrypt(self.second_score), encrypt(self.third_score)]
-        rankers = [self.highest_score, self.second_score, self.third_score]
+        rankers = [encrypt(self.highest_score), encrypt(self.second_score), encrypt(self.third_score)]
         rankFile = open("T-rex.txt", 'w')
         for i in range(0, 3):
             rankFile.write(f"{rankers[i]}\n")

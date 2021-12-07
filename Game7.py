@@ -445,7 +445,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             bgm_level4.stop()
             bgm_level5.stop()
             bgm_level6.stop()
-            score_board.save_rankscore(score)
+            score_board.save_rank_score(score)
             break
 
     # 게임 종료 인터페이스

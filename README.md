@@ -10,37 +10,11 @@
 5. RSA보안을 이용하여 폴더의 파일을 통해 등수 조작을 하지 못하도록 제작하였습니다.
 
 # How to play
-## ~ Python 3.9
-### Windows
-```powershell
-python.exe -m venv venv # 가상 환경 생성 (이미 생성된 경우는 통과)
-.\venv\Scripts\activate # 가상 환경 활성화
-pip install -r requirements.txt # requirements.txt 에 작성된 의존성 설치
-```
-
-### Mac & Linux
-```zsh
-python3 -m venv venv # 가상 환경 생성 (이미 생성된 경우는 통과)
-source ./venv/bin/activate # 가상 환경 활성화
-pip install -r requirements.txt # requirements.txt 에 작성된 의존성 설치
-```
-
-## Python 3.10
-### 공통
-* Gmpy2 는 Python 3.10을 공식적으로 지원하지 않기 때문에 RC(Release Candidate) 버전을 내려받아 수동 설치 해야 합니다.
-* 라이브러리 설치를 위한 whl 파일은 [해당 링크](https://github.com/aleaxit/gmpy/releases/tag/gmpy2-2.1.0rc1) 에서 받으실 수 있습니다.
-* Windows 64 비트 사용자는 gmpy2-2.1.0rc1-cp310-cp310-win_amd64.whl 를 다운받으면 됩니다. 
-* Linux 32 비트 사용자는 gmpy2-2.1.0rc1-cp310-cp310-manylinux_2_12_i686.manylinux2010_i686.whl 를 다운받으면 됩니다. 
-* Linux 64 비트 사용자는 gmpy2-2.1.0rc1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl 를 다운받으면 됩니다. 
-* MacOS(Intel) 사용자는 gmpy2-2.1.0rc1-cp310-cp310-macosx_10_9_x86_64.whl 를 다운받으면 됩니다. 
-* MacOS(Apple Silicon) 사용자는 빌드된 라이브러리가 제공되지 않아 Source를 빌드하셔야 합니다.
-
 ### Windows
 ```powershell
 python.exe -m venv venv # 가상 환경 생성 (이미 생성된 경우는 통과)
 .\venv\Scripts\activate # 가상 환경 활성화
 pip install pygame # Pygame 라이브러리 설치
-pip install {다운받은 whl 경로} # Gmpy2 라이브러리 설치
 ```
 
 ### Mac & Linux
@@ -48,8 +22,12 @@ pip install {다운받은 whl 경로} # Gmpy2 라이브러리 설치
 python3 -m venv venv # 가상 환경 생성 (이미 생성된 경우는 통과)
 source ./venv/bin/activate # 가상 환경 활성화
 pip install pygame # Pygame 라이브러리 설치
-pip install {다운받은 whl 경로} # Gmpy2 라이브러리 설치
 ```
+      
+* 스페이스바를 눌러 게임을 시작하세요.   
+* 싱글모드를 플레이하려면 s키, 멀티모드(2명)를 플레이하려면 m키를 눌러주세요.   
+* 싱글모드에서는 방향키로 조종합니다.
+* 멀티모드에서 player 1은 방향키, player 2는 W, S 키로 조종합니다.   
      
           
 # Game Display

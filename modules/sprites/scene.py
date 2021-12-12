@@ -64,6 +64,58 @@ class Cloud(pygame.sprite.Sprite):
             self.kill()
 
 
+'''sun'''
+
+
+class Sun(pygame.sprite.Sprite):
+    def __init__(self, image_path, position):
+        pygame.sprite.Sprite.__init__(self)
+        # 그림 가져오기
+        self.image = pygame.image.load(image_path)
+        self.rect = self.image.get_rect()
+        self.rect.left, self.rect.top = position
+        # 필요한 인자 정의
+        self.speed = 0
+
+    '''화면에 그림 그리기'''
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
+
+    '''sun 업데이트'''
+
+    def update(self):
+        self.rect = self.rect.move([self.speed, 0])
+        if self.rect.right < 0:
+            self.kill()
+
+
+'''moon'''
+
+
+class Moon(pygame.sprite.Sprite):
+    def __init__(self, image_path, position):
+        pygame.sprite.Sprite.__init__(self)
+        # 그림 가져오기
+        self.image = pygame.image.load(image_path)
+        self.rect = self.image.get_rect()
+        self.rect.left, self.rect.top = position
+        # 필요한 인자 정의
+        self.speed = 0
+
+    '''화면에 그림 그리기'''
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
+
+    '''moon 업데이트'''
+
+    def update(self):
+        self.rect = self.rect.move([self.speed, 0])
+        if self.rect.right < 0:
+            self.kill()
+
+
 '''점수판'''
 
 
@@ -75,7 +127,8 @@ class Scoreboard(pygame.sprite.Sprite):
         self.images = []
         image = pygame.image.load(image_path)
         for i in range(12):
-            self.images.append(pygame.transform.scale(image.subsurface((i * 20, 0), (20, 24)), size))
+            self.images.append(pygame.transform.scale(
+                image.subsurface((i * 20, 0), (20, 24)), size))
         if is_highest:
             self.image = pygame.Surface((size[0] * 8, size[1]))
         else:
@@ -152,10 +205,13 @@ class Scoreboard(pygame.sprite.Sprite):
             for idx, digital in enumerate(list(self.score)):
                 digital_image = self.images[int(digital)]
                 if self.is_highest:
-                    self.image.blit(digital_image, ((idx + 3) * digital_image.get_rect().width, 0))
+                    self.image.blit(
+                        digital_image, ((idx + 3) * digital_image.get_rect().width, 0))
                 else:
-                    self.image.blit(digital_image, (idx * digital_image.get_rect().width, 0))
+                    self.image.blit(
+                        digital_image, (idx * digital_image.get_rect().width, 0))
             if self.is_highest and digital_image is not None:
                 self.image.blit(self.images[-2], (0, 0))
-                self.image.blit(self.images[-1], (digital_image.get_rect().width, 0))
+                self.image.blit(
+                    self.images[-1], (digital_image.get_rect().width, 0))
             screen.blit(self.image, self.rect)

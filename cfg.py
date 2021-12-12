@@ -35,6 +35,8 @@ IMAGE_PATHS = {
         os.path.join(os.getcwd(), 'resources/images/dino_2.png'),
         os.path.join(os.getcwd(), 'resources/images/dino_ducking_2.png')
     ],
+    'sun': os.path.join(os.getcwd(), 'resources/images/sun1.png'),
+    'moon': os.path.join(os.getcwd(), 'resources/images/moon1.png'),
     'gameover': os.path.join(os.getcwd(), 'resources/images/gameover.png'),
     'ground': os.path.join(os.getcwd(), 'resources/images/ground.png'),
     'numbers': os.path.join(os.getcwd(), 'resources/images/numbers.png'),
@@ -43,6 +45,7 @@ IMAGE_PATHS = {
 }
 
 # 배경색상
-BACKGROUND_COLOR = (235, 235, 235)
+BACKGROUND_COLOR = (153, 255, 255)
+BACKGROUND_COLOR2 = (0, 51, 102)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

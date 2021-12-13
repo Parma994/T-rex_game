@@ -285,7 +285,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
             break
 
     # 멀티플레이모드
-    while setting_mode == 1:
+    while setting_mode == 2:
         if(score < 200):
             screen.fill(cfg.BACKGROUND_COLOR)
 

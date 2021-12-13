@@ -191,39 +191,39 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 for item in cloud_sprites_group:
                     item.speed -= 0.3
                 for item in cactus_sprites_group:
-                    item.speed -= 0.1
+                    item.speed -= 0.2
                 for item in ptera_sprites_group:
-                    item.speed -= 0.1
+                    item.speed -= 0.2
                 for item in apple_sprites_group:
-                    item.speed -= 0.1
+                    item.speed -= 0.2
             if (300 <= score < 499):
                 ground.speed -= 0.4
                 for item in cloud_sprites_group:
                     item.speed -= 0.4
                 for item in cactus_sprites_group:
-                    item.speed -= 0.2
+                    item.speed -= 0.4
                 for item in ptera_sprites_group:
-                    item.speed -= 0.2
+                    item.speed -= 0.4
                 for item in apple_sprites_group:
-                    item.speed -= 0.3
+                    item.speed -= 0.4
             if (500 <= score < 999):
                 ground.speed -= 0.5
                 for item in cloud_sprites_group:
                     item.speed -= 0.5
                 for item in cactus_sprites_group:
-                    item.speed -= 0.3
+                    item.speed -= 0.6
                 for item in ptera_sprites_group:
-                    item.speed -= 0.3
+                    item.speed -= 0.6
                 for item in apple_sprites_group:
-                    item.speed -= 0.4
+                    item.speed -= 0.5
             if (1000 <= score < 1299):
                 ground.speed -= 0.7
                 for item in cloud_sprites_group:
                     item.speed -= 0.6
                 for item in cactus_sprites_group:
-                    item.speed -= 0.5
+                    item.speed -= 0.7
                 for item in ptera_sprites_group:
-                    item.speed -= 0.5
+                    item.speed -= 0.7
                 for item in apple_sprites_group:
                     item.speed -= 0.6
             if (1300 <= score < 1599):
@@ -231,9 +231,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 for item in cloud_sprites_group:
                     item.speed -= 0.7
                 for item in cactus_sprites_group:
-                    item.speed -= 0.7
+                    item.speed -= 0.8
                 for item in ptera_sprites_group:
-                    item.speed -= 0.7
+                    item.speed -= 0.8
                 for item in apple_sprites_group:
                     item.speed -= 0.8
             if (1600 <= score):
@@ -241,9 +241,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 for item in cloud_sprites_group:
                     item.speed -= 0.8
                 for item in cactus_sprites_group:
-                    item.speed -= 0.8
+                    item.speed -= 0.9
                 for item in ptera_sprites_group:
-                    item.speed -= 0.8
+                    item.speed -= 0.9
                 for item in apple_sprites_group:
                     item.speed -= 0.9
         # --충돌 체크
@@ -402,39 +402,39 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 for item in cloud_sprites_group:
                     item.speed -= 0.3
                 for item in cactus_sprites_group:
-                    item.speed -= 0.1
+                    item.speed -= 0.2
                 for item in ptera_sprites_group:
-                    item.speed -= 0.1
+                    item.speed -= 0.2
                 for item in apple_sprites_group:
-                    item.speed -= 0.1
+                    item.speed -= 0.2
             if (300 <= score < 499):
                 ground.speed -= 0.4
                 for item in cloud_sprites_group:
                     item.speed -= 0.4
                 for item in cactus_sprites_group:
-                    item.speed -= 0.2
+                    item.speed -= 0.4
                 for item in ptera_sprites_group:
-                    item.speed -= 0.2
+                    item.speed -= 0.4
                 for item in apple_sprites_group:
-                    item.speed -= 0.3
+                    item.speed -= 0.4
             if (500 <= score < 999):
                 ground.speed -= 0.5
                 for item in cloud_sprites_group:
                     item.speed -= 0.5
                 for item in cactus_sprites_group:
-                    item.speed -= 0.3
+                    item.speed -= 0.6
                 for item in ptera_sprites_group:
-                    item.speed -= 0.3
+                    item.speed -= 0.6
                 for item in apple_sprites_group:
-                    item.speed -= 0.4
+                    item.speed -= 0.5
             if (1000 <= score < 1299):
                 ground.speed -= 0.7
                 for item in cloud_sprites_group:
                     item.speed -= 0.6
                 for item in cactus_sprites_group:
-                    item.speed -= 0.5
+                    item.speed -= 0.7
                 for item in ptera_sprites_group:
-                    item.speed -= 0.5
+                    item.speed -= 0.7
                 for item in apple_sprites_group:
                     item.speed -= 0.6
             if (1300 <= score < 1599):
@@ -442,9 +442,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 for item in cloud_sprites_group:
                     item.speed -= 0.7
                 for item in cactus_sprites_group:
-                    item.speed -= 0.7
+                    item.speed -= 0.8
                 for item in ptera_sprites_group:
-                    item.speed -= 0.7
+                    item.speed -= 0.8
                 for item in apple_sprites_group:
                     item.speed -= 0.8
             if (1600 <= score):
@@ -452,9 +452,9 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 for item in cloud_sprites_group:
                     item.speed -= 0.8
                 for item in cactus_sprites_group:
-                    item.speed -= 0.8
+                    item.speed -= 0.9
                 for item in ptera_sprites_group:
-                    item.speed -= 0.8
+                    item.speed -= 0.9
                 for item in apple_sprites_group:
                     item.speed -= 0.9
         # --충돌 체크

@@ -46,6 +46,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
     apple_sprites_group = pygame.sprite.Group()
     add_obstacle_timer = 0
     score_timer = 0
+    apple_random = 0
 
     # 음악구현(1)
     bgm = pygame.mixer.Sound("resources/audios/bgm.mp3")
@@ -255,7 +256,10 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 dino.die(sounds)
         for item in apple_sprites_group:
             if pygame.sprite.collide_mask(dino, item):
-                score += 50
+                apple_random = random.randint(1,95)
+                if apple_random < 6 : score += 100
+                else : score += 50
+                sounds['eaten'].play()
                 apple_sprites_group.empty()
 
         # --게임 요소 화면에 그리기
@@ -467,6 +471,7 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
         for item in apple_sprites_group:
             if pygame.sprite.collide_mask(dino, item):
                 score += 50
+                sounds['eaten'].play()
                 apple_sprites_group.empty()
 
         # --충돌 체크(2)
@@ -478,7 +483,10 @@ def main(highest_score_in_a_game, second_score_in_a_game, third_score_in_a_game)
                 dino_2.die(sounds)
         for item in apple_sprites_group:
             if pygame.sprite.collide_mask(dino_2, item):
-                score += 50
+                apple_random = random.randint(1,95)
+                if apple_random < 6 : score += 100
+                else : score += 50
+                sounds['eaten'].play()
                 apple_sprites_group.empty()
 
         # --게임 요소 화면에 그리기
